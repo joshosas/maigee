@@ -9,9 +9,14 @@ app.add_api(config.basedir / "swagger.yml")
 
 @app.route("/")
 def home():
+    """
+    Displays the home page with a list of all people in the database.
+
+    :return: The rendered home page template.
+    """
     people = Person.query.all()
     return render_template("home.html", people=people)
-
+    
 
 if __name__ == "__main__":
     app.run(debug=True)

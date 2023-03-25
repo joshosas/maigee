@@ -46,6 +46,15 @@ PEOPLE_NOTES = [
 
 
 def get_data_from_table(model):
+    """
+    Queries the database for all entries of the given model.
+
+    Args:
+        model: The SQLAlchemy model to query.
+
+    Returns:
+        A list of entries from the given table, or an empty list if there was an error.
+    """
     try:
         data = db.session.query(model).all()
         db.session.close()
@@ -55,6 +64,12 @@ def get_data_from_table(model):
 
 
 def create_database(db):
+    """
+    Creates a new database using the data in the PEOPLE_NOTES list.
+
+    Args:
+        db: The SQLAlchemy database object to use.
+    """
     db.create_all()
     for data in PEOPLE_NOTES:
         new_person = Person(lname=data.get("lname"), fname=data.get("fname"))
@@ -73,6 +88,14 @@ def create_database(db):
 
 
 def update_database(db, existing_people, existing_notes):
+    """
+    Updates an existing database with new data.
+
+    Args:
+        db: The SQLAlchemy database object to use.
+        existing_people: A list of Person objects already in the database.
+        existing_notes: A list of Note objects already in the database.
+    """
     db.drop_all()
     db.create_all()
     for person in existing_people:
