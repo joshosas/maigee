@@ -85,4 +85,4 @@ def delete(person_id):
         db.session.commit()
         return make_response(f"{person_id} successfully deleted", 200)
     else:
-        abort(404, f"Person with ID {person_id} not found"
+        abort(404, f"Person with ID {person_id} not found")
