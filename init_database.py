@@ -113,4 +113,4 @@ with app.app_context():
     if not existing_people:
         create_database(db)
     else:
-        update_database(db, existing_people, existing_notes
+        update_database(db, existing_people, existing_notes)
