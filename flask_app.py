@@ -6,7 +6,7 @@ from models import Person
 app = config.connex_app
 app.add_api(config.basedir / "swagger.yml")
 
-
+7
 @app.route("/")
 def home():
     """
